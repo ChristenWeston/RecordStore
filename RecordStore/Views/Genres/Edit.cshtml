@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Genre
+
+<h2>Edit</h2>
+
+<h4>Edit this genre: @Html.DisplayFor(model => model.GenreName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.GenreId)
+
+    @Html.LabelFor(model => model.GenreName)
+    @Html.EditorFor(model => model.GenreName)
+
+    <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to genres", "Index")</p>

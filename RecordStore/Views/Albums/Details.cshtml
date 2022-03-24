@@ -1,0 +1,47 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Album
+
+<h2>Album Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.AlbumName): @Html.DisplayFor(model => model.AlbumName)</h3>
+
+@if(@Model.JoinEntries.Count == 0)
+{
+  <p>This album does not belong to any genre or have a song</p>
+}
+else
+{
+  <h4>Genres or songs associated with the album:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntries)
+  {
+    if (join.Genre != null)
+    {
+      <li>Genre: @join.Genre.GenreName</li>
+      @using (Html.BeginForm("DeleteJoin", "Albums"))
+      {
+        @Html.Hidden("joinId", @join.GenreAlbumSongId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+    else 
+    {
+      <li>Tag: @join.Song.SongName</li>
+      @using (Html.BeginForm("DeleteJoin", "Albums"))
+      {
+        @Html.Hidden("joinId", @join.GenreAlbumSongId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Album", "Edit", new { id = Model.AlbumId })</p>
+<p>@Html.ActionLink("Add a Genre", "AddGenre", new { id = Model.AlbumId })</p>
+<p>@Html.ActionLink("Add a Song", "AddSong", new { id = Model.AlbumId })</p>
+<p>@Html.ActionLink("Delete Album", "Delete", new { id = Model.AlbumId })</p>

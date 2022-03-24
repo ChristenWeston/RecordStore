@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Album
+
+<h4>Add a new album</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.AlbumName)
+  @Html.TextBoxFor(model => model.AlbumName)
+
+  @Html.LabelFor(model => model.ArtistName)
+  @Html.TextBoxFor(model => model.ArtistName)
+
+  @Html.Label("Select Genre")
+  @Html.DropDownList("GenreId")
+
+<input type ="submit" value="Add new album" class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Show all albums", "Index")</p>

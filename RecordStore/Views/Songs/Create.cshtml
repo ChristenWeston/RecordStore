@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Song
+
+<h4>Add a new song</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.SongName)
+  @Html.TextBoxFor(model => model.SongName)
+
+  <input type="submit" value="Add new song" class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Show all songs", "Index")</p>

@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using RecordStore.Models;
+@model List<RecordStore.Models.Album>;
+
+<h1>Albums</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No albums have been added yet!</h3>
+} 
+
+@foreach (Album album in Model)
+{
+  <li>@Html.ActionLink($"{album.AlbumName}", "Details", new { id = album.AlbumId })</li>
+}
+
+<p>@Html.ActionLink("Add new album", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

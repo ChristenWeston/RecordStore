@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Album
+
+<h2>Edit</h2>
+
+<h4>Edit this album: @Html.DisplayFor(model => model.AlbumName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.AlbumId)
+
+    @Html.LabelFor(model => model.AlbumName)
+    @Html.EditorFor(model => model.AlbumName)
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

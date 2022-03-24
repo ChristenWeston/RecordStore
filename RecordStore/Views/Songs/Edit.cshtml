@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Song
+
+<h2>Edit</h2>
+
+<h4>Edit this tag: @Html.DisplayFor(model => model.SongName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.SongId)
+
+    @Html.LabelFor(model => model.SongName)
+    @Html.EditorFor(model => model.SongName)
+
+    @Html.Label("Select Album")
+    @Html.DropDownList("AlbumId", "---")
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

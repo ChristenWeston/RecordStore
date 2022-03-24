@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Genre
+
+<h4>Add a new genre</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.GenreName)
+    @Html.TextBoxFor(model => model.GenreName)
+    <input type="submit" value="Add new genre" />
+}
+<p>@Html.ActionLink("Show all genres", "Index")</p>

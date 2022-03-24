@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Genre;
+
+<h2>Genre Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.GenreName): @Html.DisplayFor(model => model.GenreName)</h3>
+
+@if(@Model.Albums.Count == 0)
+{
+  <p>This genre does not contain any albums</p>
+}
+else
+{
+  <h4>Albums the genre contains:</h4>
+  <ul>
+  @foreach(var join in Model.Albums)
+  {
+    <li>@join.Album.AlbumName</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to genres", "Index")</p>
+<p>@Html.ActionLink("Edit Genre", "Edit", new { id = Model.GenreId })</p>
+<p>@Html.ActionLink("Delete Genre", "Delete", new { id = Model.GenreId })</p>
